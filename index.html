@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Cutest Best Friend</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="container">
+        <h1 class="fade-in">The Prettiest Bestie Ever..🤭💗</h1>
+        <div class="greeting fade-in">Welcome to our special place! 💖</div>
+        <a href="./lolopolo.html" class="cta-button fade-in">
+            Click to Enter Our Story, Our Memories 💕
+          </a>
+        
+        <div class="btn-container">
+            <button class="btn color-btn fade-in">Change Theme 🎨</button>
+            <button class="btn song-btn fade-in">Play Song 🎶</button>
+        </div>
+    </div>
+
+    <audio id="song" src="song1.m4a"></audio>
+
+    <script>
+        const gradients = [
+            'linear-gradient(135deg, #FF61D2, #FE9090, #FFB8D1)',
+            'linear-gradient(135deg, #FF1493, #FF69B4, #FFB6C1)',
+            'linear-gradient(135deg, #FF0080, #FF8C00, #FFA500)',
+            'linear-gradient(135deg, #FF69B4, #DA70D6, #FFB6C1)',
+            'linear-gradient(135deg, #FF1493, #FF69B4, #FF8C00)',
+            'linear-gradient(135deg, #FF4500, #FF69B4, #FFB6C1)',
+            'linear-gradient(135deg, #FF00FF, #FF1493, #FF69B4)',
+            'linear-gradient(135deg, #FF0080, #FF69B4, #FFA07A)'
+        ];
+
+        const songs = [
+            "song1.m4a", // Replace with your song file
+            "song2.m4a", // Add more songs if you want
+            "song3.m4a"
+        ];
+
+        let currentGradient = 0;
+        let currentSong = 0;
+        let isPlaying = false;
+        const audio = document.getElementById("song");
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Change Theme Button
+            document.querySelector('.color-btn').addEventListener('click', () => {
+                currentGradient = (currentGradient + 1) % gradients.length;
+                document.body.style.background = gradients[currentGradient];
+            });
+
+            // Play Song Button
+            document.querySelector('.song-btn').addEventListener('click', () => {
+                if (!isPlaying) {
+                    audio.src = songs[currentSong];
+                    audio.play();
+                    isPlaying = true;
+                    document.querySelector('.song-btn').textContent = "Pause Song ⏸️";
+                } else {
+                    audio.pause();
+                    isPlaying = false;
+                    document.querySelector('.song-btn').textContent = "Play Song 🎶";
+                }
+
+                audio.onended = () => {
+                    currentSong = (currentSong + 1) % songs.length;
+                    audio.src = songs[currentSong];
+                    audio.play();
+                };
+            });
+        });
+    </script>
+</body>
+</html>
