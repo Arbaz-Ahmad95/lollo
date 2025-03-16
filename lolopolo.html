@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story - Mehwash Miskat</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif; /* Clean and simple font */
+            background: #f9f9f9; /* Light background */
+            color: #333; /* Dark text for readability */
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6; /* Improved line spacing */
+        }
+        h1 {
+            font-size: 32px;
+            color: #2c3e50; /* Dark blue for headings */
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0; /* Subtle line under heading */
+            padding-bottom: 10px;
+        }
+        h2 {
+            font-size: 24px;
+            color: #34495e; /* Slightly lighter blue for subheadings */
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 16px;
+            text-align: left; /* Left-aligned text */
+            margin-bottom: 20px; /* Space between paragraphs */
+            color: #555; /* Slightly lighter text for paragraphs */
+        }
+        .container {
+            max-width: 100%; /* Limit width for better readability */
+            margin: 0 auto; /* Center the container */
+            padding: 20px;
+            background: #fff; /* White background for content */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            border-radius: 8px; /* Rounded corners */
+        }
+        .story-container {
+            width: 100%;
+        }
+        .chat-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+           
+            margin-top: 20px;
+        }
+        .chat-image {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .chat-date {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #555; /* Darker text for contrast */
+            font-weight: bold;
+        }
+        .hearts-container {
+            position: absolute;
+            width: 100%;
+            height: 550px;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            color: red;
+            animation: floatUp 5s linear infinite;
+        }
+        @keyframes floatUp {
+            30% {
+                transform: translateY(0) scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(1.6);
+                opacity: 0;
+            }
+        }
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 28px;
+            }
+            h2 {
+                font-size: 22px;
+            }
+            p {
+                font-size: 14px;
+            }
+            .chat-image {
+                max-width: 80%;
+            }
+        }
+
+
+
+
+        .button-container {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+            
+        }
+
+        .btn {
+            padding: 18px 35px;
+            font-size: 1.3rem;
+            font-family: 'Dancing Script', cursive;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            background: red;
+            color: white;
+            backdrop-filter: blur(5px);
+            transition: all 0.4s ease;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            min-width: 200px;
+            letter-spacing: 1px;
+        }
+
+        .btn::before {
+            content: '✦';
+            position: absolute;
+            left: 15px;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .btn::after {
+            content: '✦';
+            position: absolute;
+            right: 15px;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2),
+                        0 0 20px rgba(255, 192, 203, 0.4);
+            background: rgba(255, 255, 255, 0.25);
+            padding-left: 45px;
+            padding-right: 45px;
+            color: black;
+        }
+
+        .btn:hover::before,
+        .btn:hover::after {
+            opacity: 1;
+        }
+
+
+
+
+        @media (max-width: 600px) {
+            .button-container {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 80%;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Our Story</h1>
+        <div class="story-container">
+            <p>My name is Arbaz, and in September 2020, I got admission to Maulana Azad College for a Diploma in Computer Science. My roll number was 17. 🎓 Just a few months later, the world changed. The COVID-19 pandemic forced colleges to shut down, and everything moved online. 🏠💻</p>
+            <p>Classes started online, and students were trying to adjust to this new way of learning. 📚 One day, in our college student group, a message popped up from a girl named Mehwash Miskat (Roll Number 35). She was asking for class notes. 📄</p>
+            <p>Instead of sending them in the group, I decided to send them to her personally. She replied, surprised, "Why did you send them here?" 🤔</p>
+            <p>I simply answered, "Because only you need the notes, not everyone else." 😌</p>
+            <p>She just said, "Okay, thanks." 🙏 That was it. Nothing more. At that time, we didn’t talk much. Days passed, and slowly, we started chatting—only about notes and exams at first. 📝📖</p>
+            <p>With time, our conversations became more frequent. We started asking small personal questions—our names, where we lived, our interests. But still, our numbers were not saved in each other’s phones. 📱❌</p>
+            <p>Eventually, we both saved each other’s numbers. And that’s how our story truly began—Mehwash Miskat, Roll Number 35, and me, Arbaz, Roll Number 17. ❤️</p>
+        </div>
+        <div class="chat-container">
+            <img class="chat-image" src="firstchat.jpeg" alt="Our First Chat">
+            <p class="chat-date">Chat Date: February 10, 2021 📅</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>The Bestfriend Offer</h2>
+        <div class="story-container">
+            <p>After talking for some days online on WhatsApp, I started feeling something special about her. I wasn’t sure if it was true or just my mind playing tricks, but I had this strong feeling that I wanted to make her my best friend. So, in the flow of our conversation, I casually offered her to be my best friend. Her reply surprised me—she said, "Sach me?" (Really?). Without thinking twice, I said, "Yes!" 😊</p>
+            <p>She accepted my offer but warned me, "You made me your best friend, but you won’t be able to handle me." 😅 Confidently, I told her, "I will handle you!" But soon, I realized that she was very possessive and had a short temper. She would get angry quickly, and I had to learn how to manage her emotions. Slowly, I started understanding her better—why she got aggressive, what made her upset, and what made her happy. I tried to avoid mistakes that could hurt her and made an effort every day to make our bond stronger. 💖</p>
+        </div>
+        <div class="chat-container">
+            <img class="chat-image" src="bestfriend_offer_chat.jpeg" alt="Best Friend Offer Chat">
+            <p class="chat-date">Special Day: May 7, 2021 📅</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Our First Travel Together</h2>
+        <div class="story-container">
+            <p>After a few months, the COVID-19 situation improved, and our college reopened for offline classes. We both booked our train tickets separately—her parents booked a ticket for her and her father, while I booked mine on the same train but in a different coach. 🌍✨</p>
+            <p>The train was from Samastipur, and my home was 35km away while hers was 25km away. It was a big day for both of us. We had never met before—only chatted online. I felt a mix of excitement and nervousness, a feeling beyond words. My family came to drop me at the station, and so did hers, but our families didn't know about each other. ❤️🏞️</p>
+            <p>For the first time, I saw her on the railway bridge, but we were in different coaches, so we couldn’t meet in person. Her father was with her, and we could only talk through WhatsApp during the train journey. The train finally reached Secunderabad, and I went straight to my college, while she went to her relatives' house as they lived nearby. ❤️🏞️</p>
+            <p>The next day, she came to the college hostel for admission formalities. Once again, I saw her but didn’t get the chance to talk to her in person. For the next few days, it was the same—we saw each other but didn’t speak directly. It was a strange yet beautiful phase of our journey. ❤️🏞️</p>
+        </div>
+        <div class="chat-container">
+            <h2>Our First Journey Together - 26 November 2021</h2>
+            <video controls class="chat-image">
+                <source src="first_travel.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p class="chat-date">"Tera Ban Jaunga" - Kabir Singh 🎵</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Our First Click Together</h2>
+        <div class="story-container">
+            <p>Our first personal meeting was different. It wasn’t really personal, as we met in a friend group. We didn’t talk much at first because she was very shy. 😊</p>
+            <p>She had an ego problem and wouldn’t start the conversation. I wasn’t sure what she was feeling at that time because she never spoke first. 🤐</p>
+            <p>Whenever I asked something, she would reply, but nothing more. Slowly, we became more comfortable and started talking little by little. That’s how we got closer. 💬</p>
+        </div>
+        <div class="chat-container">
+            <img class="chat-image" src="first-meet.jpeg" alt="Our First Chat">
+            <p class="chat-date">Click Date: 2-March, 2022 📅</p>
+        </div>
+    </div>
+
+
+
+    <div class="button-container">
+
+
+        <button class="btn" id="enterBtn">Continue</button>
+    
+    </div>
+
+    <script>
+        function createHearts() {
+            for (let i = 0; i < 10; i++) {
+                let heart = document.createElement("div");
+                heart.className = "heart";
+                heart.innerHTML = "❤️";
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+                document.querySelector(".hearts-container").appendChild(heart);
+                setTimeout(() => heart.remove(), 5000);
+            }
+        }
+        setInterval(createHearts, 2000);
+
+
+
+
+
+        // Enter button functionality
+        
+        
+       
+        document.getElementById('enterBtn').addEventListener('click', () => {
+        window.location.href = "next-story.html"; // Ensure the file exists in the same directory
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You, Bestie!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            flex-direction: column;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+         
+           
+         
+        }
+        h1 {
+           
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+        video {
+            
+            width: 50%;
+           margin: auto;
+            border-radius: 10px;
+            margin-top: 15px;
+           
+            
+        }
+        .next-story {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        @media (max-width: 480px) {
+            h1 { font-size: 2em; }
+            p { font-size: 1em; }
+            .next-story { font-size: 1em; }
+        }
+
+
+
+        .button-container {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+            
+        }
+
+        .btn {
+            padding: 18px 35px;
+            font-size: 1.3rem;
+            font-family: 'Dancing Script', cursive;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            background: red;
+            color: white;
+            backdrop-filter: blur(5px);
+            transition: all 0.4s ease;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            min-width: 200px;
+            letter-spacing: 1px;
+        }
+
+        .btn::before {
+            content: '✦';
+            position: absolute;
+            left: 15px;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .btn::after {
+            content: '✦';
+            position: absolute;
+            right: 15px;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2),
+                        0 0 20px rgba(255, 192, 203, 0.4);
+            background: rgba(255, 255, 255, 0.25);
+            padding-left: 45px;
+            padding-right: 45px;
+            color: black;
+        }
+
+        .btn:hover::before,
+        .btn:hover::after {
+            opacity: 1;
+        }
+
+
+
+
+        @media (max-width: 600px) {
+            .button-container {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 70%;
+                font-size: 1rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Thank You for Being in My Life!</h1>
+        <p>Dear Bestie, you have been my strength, my happiness, and my safe place. 
+           Through every smile and tear, you stood beside me, making life beautiful. 
+           I am forever grateful for your kindness, laughter, and endless support.
+           You are not just my best friend, you are my family. ❤️</p>
+
+           <br><br>
+        <video controls>
+            <source src="image-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="next-story">Next Story Coming Soon... ✨</div>
+
+
+        <div class="button-container">
+
+
+            <button class="btn" id="enterBtn">Home Page</button>
+
+        </div>
+    </div>
+
+
+
+
+
+    <script>
+      
+       
+       
+        // Enter button functionality
+       
+       
+      
+        document.getElementById('enterBtn').addEventListener('click', () => {
+       window.location.href = "index.html"; // Ensure the file exists in the same directory
+   });
+
+   
+   </script>
+</body>
+</html>

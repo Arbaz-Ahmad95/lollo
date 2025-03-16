@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bestie - Special Moments</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif; /* Clean and simple font */
+            background: #f9f9f9; /* Light background */
+            color: #333; /* Dark text for readability */
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6; /* Improved line spacing */
+        }
+        .container {
+            max-width: 100%; /* Limit width for better readability */
+            margin: 0 auto; /* Center the container */
+            padding: 20px;
+            background: #fff; /* White background for content */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            border-radius: 8px; /* Rounded corners */
+        }
+        h1 {
+            font-size: 32px;
+            color: #2c3e50; /* Dark blue for headings */
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0; /* Subtle line under heading */
+            padding-bottom: 10px;
+        }
+        h2 {
+            font-size: 24px;
+            color: #34495e; /* Slightly lighter blue for subheadings */
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 16px;
+            text-align: left; /* Left-aligned text */
+            margin-bottom: 20px; /* Space between paragraphs */
+            color: #555; /* Slightly lighter text for paragraphs */
+        }
+        .video-gallery {
+            display: grid;
+            gap: 10px;
+            padding: 10px;
+        }
+        .video-item {
+            position: relative;
+            cursor: pointer;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .video-item video {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 50px;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+        .video-item:hover .play-btn {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Popup Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal video {
+            width: 90%;
+            max-width: 800px;
+            border-radius: 10px;
+        }
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .video-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            h1 {
+                font-size: 28px;
+            }
+            h2 {
+                font-size: 22px;
+            }
+            p {
+                font-size: 14px;
+            }
+        }
+        @media (min-width: 601px) {
+            .video-gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (min-width: 900px) {
+            .video-gallery {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+
+
+
+
+
+        .button-container {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+            
+        }
+
+        .btn {
+            padding: 18px 35px;
+            font-size: 1.3rem;
+            font-family: 'Dancing Script', cursive;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            background: red;
+            color: white;
+            backdrop-filter: blur(5px);
+            transition: all 0.4s ease;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            min-width: 200px;
+            letter-spacing: 1px;
+        }
+
+        .btn::before {
+            content: '✦';
+            position: absolute;
+            left: 15px;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .btn::after {
+            content: '✦';
+            position: absolute;
+            right: 15px;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2),
+                        0 0 20px rgba(255, 192, 203, 0.4);
+            background: rgba(255, 255, 255, 0.25);
+            padding-left: 45px;
+            padding-right: 45px;
+            color: black;
+        }
+
+        .btn:hover::before,
+        .btn:hover::after {
+            opacity: 1;
+        }
+
+
+
+        .chat-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+           
+            margin-top: 20px;
+        }
+        .chat-image {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .chat-date {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #555; /* Darker text for contrast */
+            font-weight: bold;
+        }
+
+
+
+
+        @media (max-width: 600px) {
+            .button-container {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 70%;
+                font-size: 1rem;
+            }
+
+            .chat-image {
+                max-width: 70%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My Bestie & Our Journey</h1>
+
+        <h2>🌸 A Bond Like No Other 💖</h2>
+        <p>After some days, we spent time together, and I felt so happy to be with her. She is very possessive about me and always takes care of me ❤️. She guides me, supports me anytime, and never cares about the reason or time ⏳. For her, I matter the most, just like a mother’s love 🥰.</p>
+        <p>I always wonder what good I did to have her in my life, a true blessing 💫. I always say this to her, and she just smiles and says, "No, you are the best for me!" 😊💕.</p>
+        <p>Every day, we spend time together, creating beautiful moments 💞. Slowly, our 4th semester comes to an end, and as the college closes, we go home together 🏡✨.</p>
+
+        <h2>🌙 A Night to Remember – August 2022 🚂💖</h2>
+        <p>April 2022 – our 4th semester ended, and we were going home together. On the train, other group members were with us, but that day became the best and most special day of my life ✨..</p>
+        <p>I can’t even explain how… because that night, when everyone was asleep, I was sitting beside her. In the middle of the night, for the first time, I held her hand 💕. At that moment, I felt something I had never experienced before. My heart was filled with emotions I couldn't describe 💓.</p>
+        <p>As I held her hand tightly, I imagined—she was my everything, my happiness, my world 🌎💖. But I couldn’t say any of this to her. It was just a simple touch, yet it made me feel so much. I didn’t know why... 🤍</p>
+        <p>After some time, she slowly removed her hand, and we both fell asleep 💤. But that moment, that feeling—it stayed in my heart forever... 💫</p>
+         
+
+        <h2>Missing You, But Staying Silent 💔</h2>
+        <p>When I reached home, I didn't feel well for many days. Every moment, I missed her and her voice, but I couldn't express my feelings. What do I do without her? 😞</p>
+        <p>I was always happy talking to her, but in front of her, I pretended that I was enjoying my time at home. She might think I don’t care whether she is here or not, but that’s not true. She doesn’t understand my feelings because I don’t know how to express what’s inside my heart. 💭💙 I always wonder if she will ever understand me.</p>
+        <p>Another reason I don’t share my feelings is that I don’t want to make her sad. If I tell her I miss her at home, she might start worrying about me, and I don’t want that. I want her to be happy, spend time with her family, and not cry for me. She is very possessive about me, so I keep my feelings to myself. 😔</p>
+        <p>Slowly, time passed, and I started getting used to being without her. But every night, I missed her voice. In the hostel, we had daily voice and video calls, but here at home, it's only chatting, which is really tough for me. 💬💔 But no matter what, I just keep thinking about when college will reopen so I can see her again. 🎓✨</p>
+        
+          
+        <h2>A Special Birthday with a Special Feeling 🎂💖</h2>
+        <p>On September 12 2022, my birthday arrived—the first birthday after our friendship started. I couldn’t celebrate it with her because we were both at home, but she was more excited than me for my birthday. She really wanted to spend the day together, but distance made it impossible.</p>
+        <p>That day, I wasn’t waiting for messages from anyone else—I was only waiting for her wish. 💬💙 And exactly at 12:00 AM, she was the first person to wish me. That moment felt so special, and I was very happy. 😊🎉</p>
+        <p>She even posted a story and mentioned me, making the day even more memorable. That was my first birthday where I felt truly, truly happy. And the reason? Only one—my bestie, Lolopolo! 💖🎂</p>
+        <div class="chat-container">
+            <img class="chat-image" src="first-birth.jpg" alt="Our First Chat">
+            <p class="chat-date">Chat Date: December, 2021 📅</p>
+        </div>
+
+
+        <h2>A Journey Filled with Unspoken Feelings , September 2022 🚆💙</h2>
+        <p>Finally, the time arrived—college reopened for the 5th semester, and we were going back together again. I was very happy inside, but I didn’t show it. Instead, I said, "I don’t want to go to college," even though, deep down, I was excited. The reason? I would get to spend time with her on the train. 🚉💖</p>
+        <p>As the train started from Samastipur station, after some time, she handed me a gift box for my birthday and told me to open it. I was surprised and said, "What is this? I can’t take it." But she insisted and opened the box herself. On top of the box, there was a handwritten note for me. When I finally opened it, I saw a Fire-Boltt smartwatch inside. It was expensive for me, so I hesitated and said, "I can’t accept this." But she smiled and said, "Shut up and wear it!" ⌚💝</p>
+        <p>I wore the watch, not because she forced me, but because I didn’t want to hurt her feelings. She looked so happy giving it to me, and I could see how much effort she had put into this gift. I knew how difficult it must have been for her—she had saved money for days just to buy this for me. That thought made the gift even more special. So, I accepted it, smiled, and said, "Thank you so much!" 😊🎁</p>
+        <p>During the journey, we talked, and every moment felt special to me. I always had the urge to hold her hand, but she is mature and a good girl. She knows what is right and wrong at the right time. But for me, nothing else mattered—neither the people around us nor the place we were in. My heart and mind were just focused on her. 💭💑</p>
+        <p>I don’t know why I feel this way, but I do. And I always wonder—will there ever be a day when I can hug her? I keep waiting for that moment, but I never say it out loud. I hesitate, thinking about whether it's right or wrong in our friendship. I also fear how she might see me if I express these feelings—will she think it's cheap or inappropriate? I don’t know what she feels about me.</p>
+        <p>And so, in that journey, I didn’t hold her hand. We just talked, and eventually, we reached the hostel. But my heart still carried those unspoken emotions. 💙💭</p>
+
+        <h2>Back to Routine, Closer Than Ever 💕</h2>
+        <p>After reaching the hostel, life returned to the usual routine. Every day, we spent time together, attended classes, and at night, we continued our video and voice calls just like before. 📚📱.</p>
+       <p>As days passed, something changed. Slowly, slowly, we became even closer. 💞 The bond between us grew stronger, and without realizing it, we started sharing more, understanding each other better, and feeling a deeper connection. It wasn’t just a routine anymore—it became something I looked forward to every day.</p>
+
+
+
+       <h2>The Fights and Silent Days 💔</h2>
+       <p>As time passed, we spent more time together, talking and sharing moments. But sometimes, small fights happened for different reasons, and when she got upset, she would stop talking to me. 😞</p>
+       <p>I always tried to make small efforts to say sorry, but she never forgave me quickly. Her mood wouldn’t change fast, and for days, she wouldn’t talk to me. During those times, I couldn’t explain how much I missed her or how I truly felt. The worst part was that I couldn’t express my emotions to her. When she wasn’t talking to me, I felt lost, unmotivated, and sad. 💔</p>
+       <p>She was a very stubborn girl—not easy to convince and slow to forgive. But it wasn’t just me who was sad—she missed me too. The only problem was her ego. She would never be the first to message or express her feelings. That was just how we both were.</p>
+       <p>But no matter how long the silence lasted, after some days, her mood would change, and she would start talking again. Because, deep down, she also couldn’t stay without talking to me—just like I couldn’t stay without her. 💖😊</p>
+
+
+
+       <h2>Hidden Jealousy and Unspoken Pain 💔</h2>
+       <p>In college, I became very close to her, and my feelings for her grew stronger. But sometimes, when she talked to other boys, I felt jealous and hurt. 😞 However, I never showed it in front of her. Instead, I acted like I didn’t care.</p>
+       <p>Whenever she mentioned talking to another boy, I would say, "I don’t care. It’s your wish." And she believed it. She would even say, "You really don’t care if I talk to someone else!" I always replied, "Yes, do whatever you want." But deep inside, my heart told a different story.</p>
+       <p>I couldn’t explain the pain I felt when I saw her close to other boys. I wanted to express it, but I couldn’t. Sometimes, I felt like pushing them away, but I controlled myself. I didn’t know why I was like this—why I was the kind of guy who hid his true feelings. 💔</p>
+    </div>
+
+   
+
+
+
+  <div class="button-container">
+
+
+    <button class="btn" id="enterBtn">See Our Moments</button>
+    <button class="btn" id="enterBtnn">Continue Our Story</button>
+
+</div>
+
+    <script>
+      
+       
+       
+         // Enter button functionality
+        
+        
+       
+         document.getElementById('enterBtn').addEventListener('click', () => {
+        window.location.href = "gallery-mov-lef-2.html"; // Ensure the file exists in the same directory
+    });
+
+    document.getElementById('enterBtnn').addEventListener('click', () => {
+        window.location.href = "next-story3.html"; // Ensure the file exists in the same directory
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bestie - Special Moments</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif; /* Clean and simple font */
+            background: #f9f9f9; /* Light background */
+            color: #333; /* Dark text for readability */
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6; /* Improved line spacing */
+        }
+        .container {
+            max-width: 100%; /* Limit width for better readability */
+            margin: 0 auto; /* Center the container */
+            padding: 20px;
+            background: #fff; /* White background for content */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            border-radius: 8px; /* Rounded corners */
+        }
+        h1 {
+            font-size: 32px;
+            color: #2c3e50; /* Dark blue for headings */
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0; /* Subtle line under heading */
+            padding-bottom: 10px;
+        }
+        h2 {
+            font-size: 24px;
+            color: #34495e; /* Slightly lighter blue for subheadings */
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 16px;
+            text-align: left; /* Left-aligned text */
+            margin-bottom: 20px; /* Space between paragraphs */
+            color: #555; /* Slightly lighter text for paragraphs */
+        }
+        .video-gallery {
+            display: grid;
+            gap: 10px;
+            padding: 10px;
+        }
+        .video-item {
+            position: relative;
+            cursor: pointer;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .video-item video {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 50px;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+        .video-item:hover .play-btn {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Popup Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal video {
+            width: 90%;
+            max-width: 800px;
+            border-radius: 10px;
+        }
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .video-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            h1 {
+                font-size: 28px;
+            }
+            h2 {
+                font-size: 22px;
+            }
+            p {
+                font-size: 14px;
+            }
+        }
+        @media (min-width: 601px) {
+            .video-gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (min-width: 900px) {
+            .video-gallery {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+
+
+
+
+
+        .button-container {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+            
+        }
+
+        .btn {
+            padding: 18px 35px;
+            font-size: 1.3rem;
+            font-family: 'Dancing Script', cursive;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            background: red;
+            color: white;
+            backdrop-filter: blur(5px);
+            transition: all 0.4s ease;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            min-width: 200px;
+            letter-spacing: 1px;
+        }
+
+        .btn::before {
+            content: '✦';
+            position: absolute;
+            left: 15px;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .btn::after {
+            content: '✦';
+            position: absolute;
+            right: 15px;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2),
+                        0 0 20px rgba(255, 192, 203, 0.4);
+            background: rgba(255, 255, 255, 0.25);
+            padding-left: 45px;
+            padding-right: 45px;
+            color: black;
+        }
+
+        .btn:hover::before,
+        .btn:hover::after {
+            opacity: 1;
+        }
+
+
+
+
+        @media (max-width: 600px) {
+            .button-container {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 70%;
+                font-size: 1rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My Bestie & Our Journey</h1>
+
+        <h2>Again College Close</h2>
+        <p>After two months, we were finally together in college. It felt amazing to meet daily, talk, and understand each other better. But suddenly, COVID cases started increasing, and the college closed again. That day was really tough. 😔</p>
+        <p>I was happy on the outside, telling her, "Now I’ll go home and enjoy," but deep inside, I knew something felt missing. I wouldn’t be able to see her every day, spend time together, and share little moments. 💔</p>
+        <p>She didn't say anything either, but I could see it on her face—she was sad. Maybe she thought I wasn't serious about our bond. Maybe she thought I didn’t care. But the truth was, I didn’t know how to express it. And so, we all traveled back home together in our group of friends, but things felt different. 🏡</p>
+
+        <h2>Our Bond Grew Stronger</h2>
+        <p>Even after going home, we continued talking daily on WhatsApp and Instagram. Some days in college, she even mentioned me in her stories and best friend reels, and I did the same. Our bond kept growing stronger. We started talking daily, and yes, we fought a lot too over small things. Whenever we fought, I tried to apologize in a shortcut way, and sometimes she understood, sometimes she didn’t. Slowly, our closeness deepened, and it reached a point where it felt like we couldn’t live without each other.</p>
+        <p>It sounds funny, but it was true. She became very possessive of me. If I talked to any other girl, she would get jealous and angry. At the same time, if she talked to other boys, I would feel jealous and angry too. I didn't know what this feeling was. It was the first time I experienced something like this. Slowly, I started avoiding chatting with other girls because I genuinely enjoyed talking only with her. Whenever I talked to her, I felt happy. So, I ended all my conversations with other girls and decided to build a loyal and strong friendship with her.</p>
+
+        <h2>The Train Journey - A Rollercoaster of Emotions 🚆</h2>
+        <p>Months passed, and as COVID cases decreased 📉, colleges finally reopened after our third semester. We both decided to travel back together—but not alone. We went with our group of friends, making the journey feel safe and exciting. 🎒✨</p>
+        <p>The journey was long—two nights on the train. 🛤️ It was the first time we spent such a long time talking without any college distractions. But I wasn’t great at conversations. I tried to talk, but I felt like I was boring her. I could see it in her expressions. 😕 She wasn’t as engaged as I hoped, and that upset her. She didn’t say it directly, but I could feel her disappointment. 💔</p>
+        <p>As the journey continued, some small conversations led to moments where she got angry with me. 😠 She had a quick temper, and even minor things could upset her. In those moments, I tried my best to apologize 🙇, to change her mood. I made little efforts to make her smile—talking about random topics, joking, and trying to keep the conversation light. Slowly, I could see her expressions change. Her frown turned into a small smile 😊, and finally, she was laughing again. 😆 It felt like an achievement every time I was able to bring her back to a happy mood. 🎉</p>
+        <p>Meanwhile, our other group members started noticing our interactions. 👀 They saw how we argued, how I tried to calm her down, and how she reacted to me differently than to others. It wasn’t long before they started teasing us, assuming we were more than just best friends. 👫 They thought our conversations, our small fights, and the way we handled each other were signs of something deeper. We laughed it off 😆, but somewhere inside, I started wondering—was our friendship something more? 🤔</p>
+        <p>That train journey wasn’t just about traveling to college. It was a journey where I understood her better—her quick temper, her expectations, and how much my words and actions affected her. 💖 It was also the first time I felt a new kind of responsibility—to make sure she was happy. Maybe I didn’t understand my feelings fully back then, but I knew one thing—I enjoyed making her happy. 😊❤️</p>
+
+        <h2>College Days - A Routine Filled with Conversations 📚💬</h2>
+        <p>After reaching college, our daily routine became something special. We attended classes together 🎒, sat next to each other, and whenever we had free time, we were always talking—whether in person or through messages on WhatsApp. 📱😊</p>
+        <p>As days passed, our conversations shifted from texting to calling. 📞 Soon, we found ourselves talking every night, sometimes the entire night, until the sun started rising. 🌙➡️🌞 We had endless things to talk about, and sleep didn’t seem important when we had each other’s company. 😄</p>
+        <p>It became a habit—whoever woke up first in the morning would call the other one for a wake-up call. ☎️🔔 "Wake up, it's time for class!" And then, we both got ready and went to class together. 🏫 Every moment in college, from sitting in lectures to lunch breaks, we spent together. It felt natural, like the day wouldn't be complete without these little routines. 🥰</p>
+        <p>After classes, we would walk to the hostel together 🏠, sometimes stopping at the cafeteria or canteen for snacks 🍔🥤, and then return to our rooms. But our conversations didn’t stop there. After lunch, the calls started again, and we would talk for hours about anything and everything. 💬</p>
+        <p>Other people started noticing our routine. 🤭 They saw us always together, talking all the time, and soon rumors began—everyone thought we were a couple! 💑 "Are they dating?" "They must be in a relationship!" But the truth was different. We weren’t interested in romance. We simply enjoyed each other's company, and talking was our favorite thing to do. 👫❤️</p>
+        <p>This was our college life—a cycle of classes, calls, laughter, small fights, and endless conversations. It wasn’t about love—it was about a connection that felt deeper than words. And we loved it. 💞</p>
+
+        <h2>Our Special Moments ✨</h2>
+        <p>Friendship is made of small, beautiful moments. Here are some of our favorite memories.</p>
+        <div class="video-gallery" id="videoGallery"></div>
+    </div>
+
+    <!-- Video Popup Modal -->
+    <div class="modal" id="videoModal">
+        <span class="close-btn" onclick="closeModal()">✖</span>
+        <video id="modalVideo" controls playsinline></video>
+    </div>
+
+
+
+  <div class="button-container">
+
+
+    <button class="btn" id="enterBtn">See Our Moments</button>
+    <button class="btn" id="enterBtnn">Continue Our Story</button>
+
+</div>
+
+    <script>
+        const videos = [
+            "vid1.mp4", "vid2.mp4", "vid3.mp4", "vid4.mp4",
+            "vid5.mp4", "vid6.mp4", "vid7.mp4", "vid8.mp4",
+            "vid9.mp4", "vid10.mp4"
+        ];
+        const videoGallery = document.getElementById("videoGallery");
+        const modal = document.getElementById("videoModal");
+        const modalVideo = document.getElementById("modalVideo");
+
+        videos.forEach(video => {
+            const videoItem = document.createElement("div");
+            videoItem.classList.add("video-item");
+            videoItem.innerHTML = `
+                <video src="${video}" muted playsinline></video>
+                <div class="play-btn">▶</div>
+            `;
+            videoItem.addEventListener("click", () => openModal(video));
+            videoGallery.appendChild(videoItem);
+        });
+
+        function openModal(videoSrc) {
+            modal.style.display = "flex";
+            modalVideo.src = videoSrc;
+            modalVideo.play();
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+            modalVideo.pause();
+            modalVideo.src = "";
+        }
+
+
+
+         // Enter button functionality
+        
+        
+       
+         document.getElementById('enterBtn').addEventListener('click', () => {
+        window.location.href = "gallery-mov-lef-2.html"; // Ensure the file exists in the same directory
+    });
+
+
+    document.getElementById('enterBtnn').addEventListener('click', () => {
+        window.location.href = "next-story2.html"; // Ensure the file exists in the same directory
+    });
+    </script>
+</body>
+</html>

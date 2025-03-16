@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bestie - Special Moments</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif; /* Clean and simple font */
+            background: #f9f9f9; /* Light background */
+            color: #333; /* Dark text for readability */
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6; /* Improved line spacing */
+        }
+        .container {
+            max-width: 100%; /* Limit width for better readability */
+            margin: 0 auto; /* Center the container */
+            padding: 20px;
+            background: #fff; /* White background for content */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            border-radius: 8px; /* Rounded corners */
+        }
+        h1 {
+            font-size: 32px;
+            color: #2c3e50; /* Dark blue for headings */
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0; /* Subtle line under heading */
+            padding-bottom: 10px;
+        }
+        h2 {
+            font-size: 24px;
+            color: #34495e; /* Slightly lighter blue for subheadings */
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 16px;
+            text-align: left; /* Left-aligned text */
+            margin-bottom: 20px; /* Space between paragraphs */
+            color: #555; /* Slightly lighter text for paragraphs */
+        }
+        .video-gallery {
+            display: grid;
+            gap: 10px;
+            padding: 10px;
+        }
+        .video-item {
+            position: relative;
+            cursor: pointer;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .video-item video {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 50px;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+        .video-item:hover .play-btn {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Popup Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal video {
+            width: 90%;
+            max-width: 800px;
+            border-radius: 10px;
+        }
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .video-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            h1 {
+                font-size: 28px;
+            }
+            h2 {
+                font-size: 22px;
+            }
+            p {
+                font-size: 14px;
+            }
+        }
+        @media (min-width: 601px) {
+            .video-gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (min-width: 900px) {
+            .video-gallery {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+
+
+
+
+
+        .button-container {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+            
+        }
+
+        .btn {
+            padding: 18px 35px;
+            font-size: 1.3rem;
+            font-family: 'Dancing Script', cursive;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            background: red;
+            color: white;
+            backdrop-filter: blur(5px);
+            transition: all 0.4s ease;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            min-width: 200px;
+            letter-spacing: 1px;
+        }
+
+        .btn::before {
+            content: '✦';
+            position: absolute;
+            left: 15px;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .btn::after {
+            content: '✦';
+            position: absolute;
+            right: 15px;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2),
+                        0 0 20px rgba(255, 192, 203, 0.4);
+            background: rgba(255, 255, 255, 0.25);
+            padding-left: 45px;
+            padding-right: 45px;
+            color: black;
+        }
+
+        .btn:hover::before,
+        .btn:hover::after {
+            opacity: 1;
+        }
+
+
+
+
+        @media (max-width: 600px) {
+            .button-container {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 70%;
+                font-size: 1rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My Bestie & Our Journey</h1>
+
+        <h2>🌸Unspoken Feelings in Friendship 💙</h2>
+          <p>Slowly, we became closer and closer. She was always there for me, helping me anytime I needed. 💖 Whenever I was hungry, she would order biryani for me at night. 🍛 Even when I didn’t eat at the hostel, she made sure I had food. And whenever she went outside the college to buy something, she always brought something for me too. 🛍️</p>
+           <p>She always cared for me and thought about me. But on my side, even though I did small things for her, I never truly expressed my feelings. Deep inside, I cared for her a lot, but I couldn’t show it. 😞</p>
+            <p>She started feeling like this was a one-sided friendship because I never showed jealousy when she was with other boys. I never controlled her or stopped her from anything—I always gave her freedom. But inside, it affected me. Even small things she did hurt me, but I never told her. 💔</p>
+             <p>
+                I don’t understand this feeling. It’s the first time in friendship that I’ve felt this way.no matter how much it makes me feel bad or uncomfortable." 😊
+             </p>
+
+
+        <h2>Separated in Lab, Together in Thoughts 💔</h2>
+        <p>We always went to college together and returned together. 🚶‍♂️🚶‍♀️ But for theory classes, we were in the same batch, while for lab classes, we had different schedules because our roll numbers were far apart. That was really disappointing for me, but I never expressed it to her. 😞</p>
+         <p>Whenever I was in the lab, my mind was always thinking about her. But on my face, I pretended to be happy with my group of boys and girls. 😐 She also thought I was comfortable with my group, but that wasn’t true.</p>
+         <p>I always felt that if we were in the same group, it would be more fun—we could enjoy the class together and create extra special moments. 💫 But unfortunately, this was something I couldn’t change. It wasn’t in my hands. So, I just had to accept it. 😔
+            </p>
+
+
+         <h2>Studying Together, Small Fights & Apologies 📚💙</h2>
+         <p>Our 5th semester exams arrived, and we started studying together. For some subjects, I helped her understand the topics she struggled with in class. I became her teacher. 📖✍️</p>
+          <p>But sometimes, when she didn’t understand something, I got frustrated and spoke loudly. 😤 She felt hurt by my behavior and became sad and silent. At that moment, I didn’t realize it, but later, I felt guilty. So, I immediately said sorry and apologized. 😞💔</p>
+          <p>Even after my apology, she stayed upset and didn’t talk to me for some time. I tried different ways to cheer her up, but it wasn’t easy. This became a part of our daily routine during exam time—studying, small fights, and me trying to fix things. 😅</p>
+           
+
+
+
+          <h2>The Best Part of Our Exam Days ✨📖</h2>
+          <p>Our 5th semester has started, and we both go for the exam daily. After the exam, she is always the first one to come out of the exam hall ✨. She writes fast, while I take the full time to complete my paper 📝. But she always waits for me patiently until I come out, and then we leave together. This means a lot to me ❤️. I love that she waits for me, and we walk together after the exam.</p>
+          <p>When I finish my exam and step out of the hall, the first thing I do is go to her and ask, "How was your exam? Was it good or not?" 🤔. Then we talk for a while and walk back to the hostel together. This is our daily routine during exams. But now, the exams are over, and the 5th semester has ended 📚🎉.</p>
+ </div>
+
+   
+
+
+
+  <div class="button-container">
+
+
+    <button class="btn" id="enterBtn">See Our Moments</button>
+    <button class="btn" id="enterBtnn">Continue Our Story</button>
+
+</div>
+
+    <script>
+      
+       
+       
+         // Enter button functionality
+        
+        
+       
+         document.getElementById('enterBtn').addEventListener('click', () => {
+        window.location.href = "gallery.html"; // Ensure the file exists in the same directory
+    });
+
+    document.getElementById('enterBtnn').addEventListener('click', () => {
+        window.location.href = "lastpage.html"; // Ensure the file exists in the same directory
+    });
+    </script>
+</body>
+</html>
