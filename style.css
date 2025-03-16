@@ -111,7 +111,29 @@ h1 {
 }
 
 @media (max-width: 768px) {
-    h1 { font-size: 2rem; }
-    .greeting { font-size: 1.2rem; }
-    .cta-button { font-size: 1rem; }
+   h1 { 
+        font-size: 2rem; 
+    }
+
+    .greeting { 
+        font-size: 1.2rem; 
+    }
+
+    .cta-button { 
+        font-size: 1rem;
+        padding: 0.8rem 1.6rem;
+    }
+
+    .btn {
+        font-size: 1rem;
+        padding: 15px 35px;
+        width: 100%; /* Makes button full-width on small screens */
+        max-width: 250px; /* Prevents it from getting too wide */
+    }
+
+    .btn-container {
+        flex-direction: column; /* Stacks buttons vertically */
+        align-items: center;
+        gap: 15px;
+    }
 }
